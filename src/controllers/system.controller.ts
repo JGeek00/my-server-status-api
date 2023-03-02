@@ -7,7 +7,7 @@ const getSystemInfo = async () => {
     bios: data.system.bios.join(','),
     baseboard: data.system.baseboard.join(','),
     chassis: data.system.chassis.join(',')
-  })
+  });
 }
 
 export default getSystemInfo;

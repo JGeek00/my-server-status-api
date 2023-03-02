@@ -70,5 +70,23 @@
       "mount",
       "rw"
     ]
-  }
+  },
+  "network": [
+    "iface",
+    "ifaceName",
+    "default",
+    "ip4",
+    "ip4subnet",
+    "ip6",
+    "ip6subnet",
+    "mac",
+    "internal",
+    "virtual",
+    "operstate",
+    "type",
+    "duplex",
+    "mtu",
+    "speed",
+    "dhcp"
+  ]
 }
