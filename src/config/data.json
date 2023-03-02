@@ -20,5 +20,33 @@
     "swaptotal",
     "swapused",
     "swapfree"
-  ]
+  ],
+  "system": {
+    "system": [
+      "manufacturer",
+      "model",
+      "version",
+      "serial",
+      ""
+    ],
+    "bios": [
+      "vendor",
+      "version",
+      "releaseDate",
+      "revision"
+    ],
+    "baseboard": [
+      "manufacturer",
+      "model",
+      "version",
+      "serial",
+      "memMax",
+      "memSlots"
+    ],
+    "chassis": [
+      "manufacturer",
+      "model",
+      "version"
+    ]
+  }
 }
