@@ -1,0 +1,24 @@
+{
+    "cpu": [
+        "manufacturer",
+        "brand",
+        "speed",
+        "speedMin",
+        "speedMax",
+        "cores",
+        "physicalCores",
+        "performanceCores",
+        "efficiencyCores",
+        "processors",
+        "socket"
+    ],
+    "memory": [
+        "total",
+        "free",
+        "used",
+        "active",
+        "swaptotal",
+        "swapused",
+        "swapfree"
+    ]
+}
