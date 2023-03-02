@@ -26,8 +26,7 @@
       "manufacturer",
       "model",
       "version",
-      "serial",
-      ""
+      "serial"
     ],
     "bios": [
       "vendor",
@@ -47,6 +46,29 @@
       "manufacturer",
       "model",
       "version"
+    ]
+  },
+  "storage": {
+    "diskLayout": [
+      "device",
+      "type",
+      "name",
+      "vendor",
+      "size",
+      "interfaceType",
+      "temperature",
+      "serialNum",
+      "firmwareRevision"
+    ],
+    "fsSize": [
+      "fs",
+      "type",
+      "size",
+      "used",
+      "available",
+      "use",
+      "mount",
+      "rw"
     ]
   }
 }
