@@ -1,6 +1,7 @@
+import { Request, Response } from "express";
 import getMemoryInfo from "../../controllers/memory.controller";
 
-const MemoryRoute = async (req: any, res: any) => {
+const MemoryRoute = async (req: Request, res: Response) => {
   try {
     const { mem } = await getMemoryInfo();
     res.json(mem)

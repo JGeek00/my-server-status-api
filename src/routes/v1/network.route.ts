@@ -1,7 +1,8 @@
+import { Request, Response } from "express";
 import getNetworkInfo from "../../controllers/network.controller";
 
 
-const NetworkRoute = async (req: any, res: any) => {
+const NetworkRoute = async (req: Request, res: Response) => {
   try {
     const data = await getNetworkInfo();
     res.json(data)

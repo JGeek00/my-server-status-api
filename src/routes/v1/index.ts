@@ -5,7 +5,7 @@ import NetworkRoute from './network.route';
 import StorageRoute from './storage.route';
 import SystemRoute from './system.route';
 
-const router = Router();
+const router: Router = Router();
 
 router.get('/cpu', CpuRoute);
 router.get('/memory', MemoryRoute);
