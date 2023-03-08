@@ -1,3 +1,4 @@
 {
-  "defaultPort": 3000
+  "defaultPort": 3000,
+  "password": ""
 }
