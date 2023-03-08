@@ -1,5 +1,8 @@
 # Node modules
 /node_modules
 
+# Dist directory
+/dist
+
 # Env file
 .env
