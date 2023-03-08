@@ -3,8 +3,8 @@ import getMemoryInfo from "../../controllers/memory.controller";
 
 const MemoryRoute = async (req: Request, res: Response) => {
   try {
-    const { mem } = await getMemoryInfo();
-    res.json(mem)
+    const data = await getMemoryInfo();
+    res.json(data)
   } catch (error) {
     res.status(500).send()
   }

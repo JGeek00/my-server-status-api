@@ -15,8 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const systeminformation_1 = __importDefault(require("systeminformation"));
 const data_json_1 = __importDefault(require("../config/data.json"));
 const getNetworkInfo = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield systeminformation_1.default.get({
-        networkInterfaces: data_json_1.default.network.join(',')
+    const network = yield systeminformation_1.default.get({
+        networkInterfaces: data_json_1.default.network.join(","),
     });
+    return network;
 });
 exports.default = getNetworkInfo;

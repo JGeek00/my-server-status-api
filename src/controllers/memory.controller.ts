@@ -1,10 +1,11 @@
-import si from 'systeminformation';
-import dataConfig from '../config/data.json';
+import si, { Systeminformation } from "systeminformation";
+import dataConfig from "../config/data.json";
 
 const getMemoryInfo = async () => {
-  return await si.get({
-    mem: dataConfig.memory.join(',')
+  const { mem }: { mem: Systeminformation.MemData } = await si.get({
+    mem: dataConfig.memory.join(","),
   });
-}
+  return mem;
+};
 
 export default getMemoryInfo;

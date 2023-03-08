@@ -1,10 +1,11 @@
-import si from 'systeminformation';
-import data from '../config/data.json';
+import si, { Systeminformation } from "systeminformation";
+import data from "../config/data.json";
 
 const getNetworkInfo = async () => {
-  return await si.get({
-    networkInterfaces: data.network.join(',')
+  const network: Systeminformation.NetworkInterfacesData = await si.get({
+    networkInterfaces: data.network.join(","),
   });
-}
+  return network;
+};
 
 export default getNetworkInfo;

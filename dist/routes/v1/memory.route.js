@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const memory_controller_1 = __importDefault(require("../../controllers/memory.controller"));
 const MemoryRoute = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { mem } = yield (0, memory_controller_1.default)();
-        res.json(mem);
+        const data = yield (0, memory_controller_1.default)();
+        res.json(data);
     }
     catch (error) {
         res.status(500).send();

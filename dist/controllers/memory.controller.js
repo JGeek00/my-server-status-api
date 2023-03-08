@@ -15,8 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const systeminformation_1 = __importDefault(require("systeminformation"));
 const data_json_1 = __importDefault(require("../config/data.json"));
 const getMemoryInfo = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield systeminformation_1.default.get({
-        mem: data_json_1.default.memory.join(',')
+    const { mem } = yield systeminformation_1.default.get({
+        mem: data_json_1.default.memory.join(","),
     });
+    return mem;
 });
 exports.default = getMemoryInfo;

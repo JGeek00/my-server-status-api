@@ -3,8 +3,8 @@ import getCpuInfo from "../../controllers/cpu.controller";
 
 const CpuRoute = async (req: Request, res: Response) => {
   try {
-    const { cpu } = await getCpuInfo();
-    res.json(cpu)
+    const data = await getCpuInfo();
+    res.json(data)
   } catch (error) {
     res.status(500).send();
   }

@@ -15,9 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const systeminformation_1 = __importDefault(require("systeminformation"));
 const data_json_1 = __importDefault(require("../config/data.json"));
 const getStorageInfo = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield systeminformation_1.default.get({
-        diskLayout: data_json_1.default.storage.diskLayout.join(','),
-        fsSize: data_json_1.default.storage.fsSize.join(',')
+    const { diskLayout, fsSize, } = yield systeminformation_1.default.get({
+        diskLayout: data_json_1.default.storage.diskLayout.join(","),
+        fsSize: data_json_1.default.storage.fsSize.join(","),
     });
+    return {
+        diskLayout,
+        fsSize
+    };
 });
 exports.default = getStorageInfo;

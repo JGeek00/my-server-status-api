@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cpu_controller_1 = __importDefault(require("../../controllers/cpu.controller"));
 const CpuRoute = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { cpu } = yield (0, cpu_controller_1.default)();
-        res.json(cpu);
+        const data = yield (0, cpu_controller_1.default)();
+        res.json(data);
     }
     catch (error) {
         res.status(500).send();

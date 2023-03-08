@@ -15,11 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const systeminformation_1 = __importDefault(require("systeminformation"));
 const data_json_1 = __importDefault(require("../config/data.json"));
 const getSystemInfo = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield systeminformation_1.default.get({
-        system: data_json_1.default.system.system.join(','),
-        bios: data_json_1.default.system.bios.join(','),
-        baseboard: data_json_1.default.system.baseboard.join(','),
-        chassis: data_json_1.default.system.chassis.join(',')
+    const { system, bios, baseboard, chassis, } = yield systeminformation_1.default.get({
+        system: data_json_1.default.system.system.join(","),
+        bios: data_json_1.default.system.bios.join(","),
+        baseboard: data_json_1.default.system.baseboard.join(","),
+        chassis: data_json_1.default.system.chassis.join(","),
     });
+    return {
+        system,
+        bios,
+        baseboard,
+        chassis
+    };
 });
 exports.default = getSystemInfo;
