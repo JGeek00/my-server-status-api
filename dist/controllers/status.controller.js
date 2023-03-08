@@ -16,23 +16,33 @@ const systeminformation_1 = __importDefault(require("systeminformation"));
 const data_json_1 = __importDefault(require("../config/data.json"));
 const getStatus = () => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d, _e, _f;
-    const { cpuCurrentSpeed, cpuTemperature, mem, fsSize } = yield systeminformation_1.default.get({
+    const { cpuCurrentSpeed, cpuTemperature, mem, fsSize, currentLoad, } = yield systeminformation_1.default.get({
         cpuCurrentSpeed: data_json_1.default.status.cpuSpeed.join(","),
         cpuTemperature: data_json_1.default.status.cpuTemperature.join(","),
         mem: data_json_1.default.status.memory.join(","),
         fsSize: data_json_1.default.status.storage.join(","),
+        currentLoad: data_json_1.default.status.load.join(","),
     });
-    const cpuStatus = Array.from({
-        length: cpuCurrentSpeed.cores.length > cpuTemperature.cores.length
-            ? cpuCurrentSpeed.cores.length
-            : cpuTemperature.cores.length,
-    }, (_, i) => {
-        var _a, _b;
-        return ({
-            speed: (_a = cpuCurrentSpeed.cores[i]) !== null && _a !== void 0 ? _a : null,
-            temperature: (_b = cpuTemperature.cores[i]) !== null && _b !== void 0 ? _b : null,
-        });
-    });
+    const cpuStatus = {
+        cores: Array.from({ length: cpuCurrentSpeed.cores.length }, (_, i) => {
+            var _a, _b, _c;
+            return ({
+                speed: (_a = cpuCurrentSpeed.cores[i]) !== null && _a !== void 0 ? _a : null,
+                temperature: (_b = cpuTemperature.cores[i]) !== null && _b !== void 0 ? _b : null,
+                load: (_c = currentLoad.cpus[i]) !== null && _c !== void 0 ? _c : null,
+            });
+        }),
+        average: {
+            speed: cpuCurrentSpeed.main,
+            temperature: cpuTemperature.main,
+            load: {
+                average: currentLoad.currentLoad,
+                user: currentLoad.currentLoadUser,
+                system: currentLoad.currentLoadSystem,
+                idle: currentLoad.currentLoadIdle,
+            },
+        },
+    };
     const memory = {
         total: (_a = mem.total) !== null && _a !== void 0 ? _a : null,
         used: (_b = mem.used) !== null && _b !== void 0 ? _b : null,
