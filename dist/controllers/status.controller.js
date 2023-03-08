@@ -25,7 +25,7 @@ const getStatus = () => __awaiter(void 0, void 0, void 0, function* () {
     const cpuStatus = Array.from({
         length: cpuCurrentSpeed.cores.length > cpuTemperature.cores.length
             ? cpuCurrentSpeed.cores.length
-            : cpuTemperature.cpres.length,
+            : cpuTemperature.cores.length,
     }, (_, i) => {
         var _a, _b;
         return ({

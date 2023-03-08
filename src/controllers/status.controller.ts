@@ -15,7 +15,7 @@ const getStatus = async () => {
       length:
         cpuCurrentSpeed.cores.length > cpuTemperature.cores.length
           ? cpuCurrentSpeed.cores.length
-          : cpuTemperature.cpres.length,
+          : cpuTemperature.cores.length,
     },
     (_, i) => ({
       speed: cpuCurrentSpeed.cores[i] ?? null,
