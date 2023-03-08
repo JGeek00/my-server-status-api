@@ -22,18 +22,8 @@
     "swapfree"
   ],
   "system": {
-    "system": [
-      "manufacturer",
-      "model",
-      "version",
-      "serial"
-    ],
-    "bios": [
-      "vendor",
-      "version",
-      "releaseDate",
-      "revision"
-    ],
+    "system": ["manufacturer", "model", "version", "serial"],
+    "bios": ["vendor", "version", "releaseDate", "revision"],
     "baseboard": [
       "manufacturer",
       "model",
@@ -42,11 +32,7 @@
       "memMax",
       "memSlots"
     ],
-    "chassis": [
-      "manufacturer",
-      "model",
-      "version"
-    ]
+    "chassis": ["manufacturer", "model", "version"]
   },
   "storage": {
     "diskLayout": [
@@ -60,16 +46,7 @@
       "serialNum",
       "firmwareRevision"
     ],
-    "fsSize": [
-      "fs",
-      "type",
-      "size",
-      "used",
-      "available",
-      "use",
-      "mount",
-      "rw"
-    ]
+    "fsSize": ["fs", "type", "size", "used", "available", "use", "mount", "rw"]
   },
   "network": [
     "iface",
@@ -88,5 +65,11 @@
     "mtu",
     "speed",
     "dhcp"
-  ]
+  ],
+  "status": {
+    "cpuSpeed": ["cores"],
+    "cpuTemperature": ["cores", "socket", "chipset"],
+    "memory": ["total", "free", "used", "active"],
+    "storage": ["fs", "type", "size", "used", "available", "use", "mount", "rw"]
+  }
 }
