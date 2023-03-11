@@ -6,3 +6,6 @@
 
 # Env file
 .env
+
+#pm2 file
+pm2.process.json

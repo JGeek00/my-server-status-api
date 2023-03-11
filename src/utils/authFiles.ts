@@ -5,7 +5,6 @@ export const readAuthFile = async () => {
     const file = await fs.readFile("./dist/config/auth.json", "utf-8");
     return file;
   } catch (error) {
-    console.error(error);
     return false;
   }
 };
@@ -15,7 +14,6 @@ export const writeAuthFile = async (content: string) => {
     await fs.writeFile("./dist/config/auth.json", content, "utf-8");
     return true;
   } catch (error) {
-    console.error(error);
     return false;
   }
 };
