@@ -7,8 +7,8 @@
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "change-password": "node dist/changePassword.js",
-    "set-credentials": "node dist/setCredentials.js"
+    "change-password": "node dist/auth/changePassword.js",
+    "set-credentials": "node dist/auth/setCredentials.js"
   },
   "author": "JGeek00",
   "license": "ISC",

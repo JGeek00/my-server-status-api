@@ -3,8 +3,8 @@
 // Example: npm run set-credentials -- -u "my_user" -p "pass1234"
 
 import fs from "fs/promises";
-import { hashPassword } from "./utils/bcryptHash";
-import defaultConfig from "./config/defaults.json"
+import { hashPassword } from "../utils/bcryptHash";
+import defaultConfig from "../config/defaults.json"
 
 const args = process.argv;
 

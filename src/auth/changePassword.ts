@@ -3,8 +3,8 @@
 // Execute "npm run change-password -r" to remove the password"
 
 import fs from "fs/promises";
-import { hashPassword } from "./utils/bcryptHash";
-import defaultConfig from "./config/defaults.json"
+import { hashPassword } from "../utils/bcryptHash";
+import defaultConfig from "../config/defaults.json"
 
 const args = process.argv;
 
