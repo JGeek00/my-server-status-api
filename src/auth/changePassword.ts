@@ -2,9 +2,9 @@
 // Execute "npm run change-password -p [YOUR_PASSWORD]" to change the password"
 // Execute "npm run change-password -r" to remove the password"
 
-import fs from "fs/promises";
 import { hashPassword } from "../utils/bcryptHash";
 import defaultConfig from "../config/defaults.json"
+import { readAuthFile, writeAuthFile } from "../utils/authFiles";
 
 const args = process.argv;
 
@@ -15,26 +15,6 @@ const instructions = () => {
   console.warn(
     "Execute `npm run change-password -- -r` to remove the password."
   );
-};
-
-const readAuthFile = async () => {
-  try {
-    const file = await fs.readFile("./dist/config/auth.json", "utf-8");
-    return file;
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
-};
-
-const writeAuthFile = async (content: string) => {
-  try {
-    await fs.writeFile("./dist/config/auth.json", content, "utf-8");
-    return true;
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
 };
 
 const main = async () => {

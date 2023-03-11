@@ -2,9 +2,9 @@
 // Execute `npm run set-credentials -- -u "[YOUR_USERNAME]" -p "[YOUR_PASSWORD]"` to set your credentials"
 // Example: npm run set-credentials -- -u "my_user" -p "pass1234"
 
-import fs from "fs/promises";
 import { hashPassword } from "../utils/bcryptHash";
 import defaultConfig from "../config/defaults.json"
+import { readAuthFile, writeAuthFile } from "../utils/authFiles";
 
 const args = process.argv;
 
@@ -12,25 +12,6 @@ const instructions = () => {
   console.warn(
     'Execute `npm run set-credentials -- -u "[YOUR_USERNAME]" -p "[YOUR_PASSWORD]"` to set your credentials.'
   );
-};
-
-const readAuthFile = async () => {
-  try {
-    const file = await fs.readFile("./dist/config/auth.json", "utf-8");
-    return file;
-  } catch (error) {
-    return false;
-  }
-};
-
-const writeAuthFile = async (content: string) => {
-  try {
-    await fs.writeFile("./dist/config/auth.json", content, "utf-8");
-    return true;
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
 };
 
 const main = async () => {
