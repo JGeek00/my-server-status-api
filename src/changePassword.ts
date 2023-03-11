@@ -3,21 +3,23 @@
 // Execute "npm run change-password -r" to remove the password"
 
 import fs from "fs/promises";
+import { hashPassword } from "./utils/bcryptHash";
+import defaultConfig from "./config/defaults.json"
 
 const args = process.argv;
 
 const instructions = () => {
   console.warn(
-    "Execute `npm run change-password -- -p [YOUR_PASSWORD]` to change the password."
+    'Execute `npm run change-password -- -p "[YOUR_PASSWORD]"` to change the password.'
   );
   console.warn(
     "Execute `npm run change-password -- -r` to remove the password."
   );
 };
 
-const readConfigFile = async () => {
+const readAuthFile = async () => {
   try {
-    const file = await fs.readFile("./dist/config/api.json", "utf-8");
+    const file = await fs.readFile("./dist/config/auth.json", "utf-8");
     return file;
   } catch (error) {
     console.error(error);
@@ -25,9 +27,9 @@ const readConfigFile = async () => {
   }
 };
 
-const writeConfigFile = async (content: string) => {
+const writeAuthFile = async (content: string) => {
   try {
-    await fs.writeFile("./dist/config/api.json", content, "utf-8");
+    await fs.writeFile("./dist/config/auth.json", content, "utf-8");
     return true;
   } catch (error) {
     console.error(error);
@@ -45,34 +47,48 @@ const main = async () => {
   } else {
     if (args[2] === "-p") {
       if (args[3] && args[3] !== "") {
-        const file = await readConfigFile();
+        const file = await readAuthFile();
         if (!file) {
-          console.error("ERROR: config file api.json is missing or corrupted.");
+          console.error("ERROR: auth file is missing or corrupted.");
         } else {
-          // TODO change password
+          try {
+            const hashedPwd = await hashPassword(args[3], process.env.SALT ? parseInt(process.env.SALT) : defaultConfig.salt)
+            let jsonParsed = JSON.parse(file);
+            
+            jsonParsed.password = hashedPwd;
+  
+            const write = await writeAuthFile(JSON.stringify(jsonParsed));
+            if (write) {
+              console.log("Credentials set successfully.");
+            } else {
+              console.error("ERROR: cannot write auth file.");
+            }
+          } catch (error) {
+            console.error(error);
+          }
         }
       } else {
         console.warn("You have to provide the new password to set.");
         instructions();
       }
     } else if (args[2] === "-r") {
-      const file = await readConfigFile();
+      const file = await readAuthFile();
       if (!file) {
-        console.error("ERROR: config file api.json is missing or corrupted.");
+        console.error("ERROR: auth file is missing or corrupted.");
       } else {
         try {
           let jsonParsed = JSON.parse(file);
           jsonParsed.password = "";
 
-          const write = await writeConfigFile(JSON.stringify(jsonParsed));
+          const write = await writeAuthFile(JSON.stringify(jsonParsed));
           if (write) {
             console.log("Password removed successfully.");
           } else {
-            console.error("ERROR: cannot write config file.");
+            console.error("ERROR: cannot write auth file.");
           }
         } catch (error) {
           console.error(error);
-          console.error("ERROR: config file format is invalid.");
+          console.error("ERROR: auth file format is invalid.");
         }
       }
     } else {
