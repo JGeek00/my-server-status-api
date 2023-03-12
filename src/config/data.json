@@ -1,17 +1,21 @@
 {
-  "cpu": [
-    "manufacturer",
-    "brand",
-    "speed",
-    "speedMin",
-    "speedMax",
-    "cores",
-    "physicalCores",
-    "performanceCores",
-    "efficiencyCores",
-    "processors",
-    "socket"
-  ],
+  "cpu": {
+    "cpu": [
+      "manufacturer",
+      "brand",
+      "speed",
+      "speedMin",
+      "speedMax",
+      "cores",
+      "physicalCores",
+      "performanceCores",
+      "efficiencyCores",
+      "processors",
+      "socket"
+    ],
+    "currentSpeed": ["avg", "min", "max"],
+    "temperature": ["main", "max"]
+  },
   "memory": [
     "total",
     "free",
@@ -70,7 +74,23 @@
     "cpuSpeed": ["cores, avg"],
     "cpuTemperature": ["cores", "socket", "chipset", "main"],
     "memory": ["total", "free", "used", "active"],
-    "storage": ["fs", "type", "size", "used", "available", "use", "mount", "rw"],
-    "load": ["avgLoad", "currentLoad", "currentLoadUser", "currentLoadSystem", "currentLoadIdle", "cpus"]
+    "storage": [
+      "fs",
+      "type",
+      "size",
+      "used",
+      "available",
+      "use",
+      "mount",
+      "rw"
+    ],
+    "load": [
+      "avgLoad",
+      "currentLoad",
+      "currentLoadUser",
+      "currentLoadSystem",
+      "currentLoadIdle",
+      "cpus"
+    ]
   }
 }
