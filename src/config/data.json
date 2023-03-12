@@ -14,7 +14,8 @@
       "socket"
     ],
     "currentSpeed": ["avg", "min", "max"],
-    "temperature": ["main", "max"]
+    "temperature": ["main", "max"],
+    "load": ["currentLoad"]
   },
   "memory": [
     "total",
