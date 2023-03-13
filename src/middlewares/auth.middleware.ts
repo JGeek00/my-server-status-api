@@ -12,7 +12,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
       const authJson = JSON.parse(authObj);
 
       if (authJson.username && authJson.password) {
-        const hashDecoded = decodeBase64(token.replace("Bearer ", ""));
+        const hashDecoded = decodeBase64(token);
 
         const split = hashDecoded.split(":");
         const user = split[0];
