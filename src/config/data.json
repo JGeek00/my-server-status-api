@@ -17,15 +17,26 @@
     "temperature": ["main", "max"],
     "load": ["currentLoad"]
   },
-  "memory": [
-    "total",
-    "free",
-    "used",
-    "active",
-    "swaptotal",
-    "swapused",
-    "swapfree"
-  ],
+  "memory": {
+    "memory": [
+      "total",
+      "free",
+      "used",
+      "active",
+      "swaptotal",
+      "swapused",
+      "swapfree"
+    ],
+    "layout": [
+      "size",
+      "bank",
+      "type",
+      "ecc",
+      "formFactor",
+      "manufacturer",
+      "voltageConfigured"
+    ]
+  },
   "system": {
     "system": ["manufacturer", "model", "version", "serial"],
     "bios": ["vendor", "version", "releaseDate", "revision"],
