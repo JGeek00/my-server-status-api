@@ -23,6 +23,7 @@
       "free",
       "used",
       "active",
+      "available",
       "swaptotal",
       "swapused",
       "swapfree"
