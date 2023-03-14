@@ -1,4 +1,18 @@
 {
+  "general": {
+    "cpu": {
+      "cpu": ["manufacturer", "brand"],
+      "currentSpeed": ["avg"],
+      "temperature": ["main"],
+      "load": ["currentLoad"]
+    },
+    "memory": {
+      "memory": ["total", "active", "swaptotal", "swapused"],
+      "layout": ["size", "type"]
+    },
+    "storageFs": ["size", "used", "use", "mount"],
+    "network": ["iface", "ip4", "ip6", "mac", "operstate", "type"]
+  },
   "cpu": {
     "cpu": [
       "manufacturer",
