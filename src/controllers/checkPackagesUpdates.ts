@@ -1,33 +1,48 @@
+import { checkPackageManager } from './../functions/checkPackageManager';
+import { checkRootAccess } from './../functions/checkRootAccess';
 import si, { Systeminformation } from "systeminformation";
 import { checkUpdatesApt } from './../functions/checkUpdatesApt';
-import packageManagers from '../constants/packageManagers.json';
-import { checkRootAccess } from "../functions/checkRootAccess";
 
-export const checkPackagesUpdates = async () => {
+export const checkPackagesUpdates = async (selectedPackageManager: string) => {
   const { osInfo }: { osInfo: Systeminformation.OsData} = await si.get({
     osInfo: 'platform, distro'
   });
 
   if (checkRootAccess()) {
     if (osInfo.platform === 'linux') {
-      // @ts-ignore
-      if (packageManagers[osInfo.distro] === 'apt') {
-        checkUpdatesApt()
+      const availablePackageManagers = await checkPackageManager();
+      if (selectedPackageManager === 'apt' && availablePackageManagers.includes('apt')) {
+        const upgrades = await checkUpdatesApt()
+        if (upgrades.success) {
+          return {
+            "success": true,
+            "message": upgrades.upgrades
+          }
+        }
+        else {
+          return {
+            "success": false,
+            "error": upgrades.error
+          }
+        }
       } 
       else {
         return {
+          "success": true,
           "message": "Distro not supported"
         }
       }
     }
     else {
       return {
+        "success": true,
         "message": "OS not supported"
       }
     }
   }
   else {
     return {
+      "success": true,
       "message": "No root access. The API requires root access to execute the update commands."
     }
   }

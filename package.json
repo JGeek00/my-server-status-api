@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
+    "start:root": "sudo node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "change-password": "node dist/auth/changePassword.js",
     "set-credentials": "node dist/auth/setCredentials.js"
