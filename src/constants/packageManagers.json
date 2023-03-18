@@ -1,0 +1,4 @@
+{
+  "ubuntu": "apt",
+  "debian": "apt"
+}

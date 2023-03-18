@@ -119,5 +119,6 @@
       "currentLoadIdle",
       "cpus"
     ]
-  }
+  },
+  "basicOsInfo": ["platform", "distro"]
 }
