@@ -8,6 +8,7 @@ import StatusRoute from './status.route';
 import StorageRoute from './storage.route';
 import SystemRoute from './system.route';
 import CheckPackagesUpdates from './checkPackagesUpdates.route';
+import PackageManagers from './packageManagers.route';
 
 const router: Router = Router();
 
@@ -19,6 +20,7 @@ router.get('/system', SystemRoute)
 router.get('/storage', StorageRoute)
 router.get('/network', NetworkRoute)
 router.get('/status', StatusRoute)
+router.get('/package-managers', PackageManagers)
 router.get('/check-packages-updates', CheckPackagesUpdates)
 
 export default router;
