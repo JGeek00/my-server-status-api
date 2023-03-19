@@ -16,7 +16,7 @@ export const checkPackagesUpdates = async (selectedPackageManager: string) => {
         if (upgrades.success) {
           return {
             "success": true,
-            "message": upgrades.upgrades
+            "output": upgrades.upgrades
           }
         }
         else {
