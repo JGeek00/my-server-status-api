@@ -25,7 +25,8 @@
       "performanceCores",
       "efficiencyCores",
       "processors",
-      "socket"
+      "socket",
+      "cache"
     ],
     "currentSpeed": ["avg", "min", "max"],
     "temperature": ["main", "max"],
