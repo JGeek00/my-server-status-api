@@ -78,6 +78,20 @@
       "serialNum",
       "firmwareRevision"
     ],
+    "blockDevices": [
+      "name",
+      "type",
+      "fsType",
+      "mount",
+      "size",
+      "physical",
+      "label",
+      "model",
+      "removable",
+      "protocol",
+      "group",
+      "device"
+    ],
     "fsSize": ["fs", "type", "size", "used", "available", "use", "mount", "rw"]
   },
   "network": [
