@@ -112,6 +112,16 @@
     "speed",
     "dhcp"
   ],
+  "os": [
+    "platform",
+    "distro",
+    "release",
+    "kernel",
+    "arch",
+    "hostname",
+    "build",
+    "uefi"
+  ],
   "status": {
     "cpuSpeed": ["cores, avg"],
     "cpuTemperature": ["cores", "socket", "chipset", "main"],
