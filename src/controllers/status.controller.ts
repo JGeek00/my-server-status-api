@@ -6,20 +6,26 @@ const getStatus = async () => {
     cpuCurrentSpeed,
     cpuTemperature,
     mem,
-    fsSize,
+    fsStats,
     currentLoad,
+    networkStats,
+    osInfo,
   }: {
     cpuCurrentSpeed: Systeminformation.CpuTemperatureData;
     cpuTemperature: Systeminformation.CpuTemperatureData;
     mem: Systeminformation.MemData;
-    fsSize: Systeminformation.FsSizeData[];
+    fsStats: Systeminformation.FsStatsData;
     currentLoad: Systeminformation.CurrentLoadData;
+    networkStats: Systeminformation.NetworkStatsData;
+    osInfo: Systeminformation.OsData;
   } = await si.get({
     cpuCurrentSpeed: data.status.cpuSpeed.join(","),
     cpuTemperature: data.status.cpuTemperature.join(","),
     mem: data.status.memory.join(","),
-    fsSize: data.status.storage.join(","),
+    fsStats: data.status.storage.join(","),
     currentLoad: data.status.load.join(","),
+    networkStats: data.status.network.join(","),
+    osInfo: "platform",
   });
 
   const cpuStatus = {
@@ -47,23 +53,27 @@ const getStatus = async () => {
     active: mem.active ?? null,
   };
 
-  const storage = fsSize.map((item: Systeminformation.FsSizeData) => ({
-    name: item.fs ?? null,
-    type: item.type ?? null,
-    size: item.size ?? null,
-    used: item.used ?? null,
-    available: item.available ?? null,
-    percentageUsed: item.use ?? null,
-    mount: item.mount ?? null,
-    writable: item.rw ?? null,
-  }));
+  const storage = ["linux", "darwin"].includes(osInfo.platform)
+    ? {
+        rx: fsStats.rx_sec ?? 0,
+        wx: fsStats.wx_sec ?? 0,
+      }
+    : null;
+
+  const network = osInfo.platform !== "sun"
+    ? {
+        tx: networkStats.tx_sec ?? 0,
+        rx: fsStats.rx_sec ?? 0,
+      }
+    : null;
 
   return {
     cpu: cpuStatus,
-    socket: cpuTemperature.socket ?? null,
-    chipset: cpuTemperature.chipset ?? null,
+    socketTemperature: cpuTemperature.socket ?? null,
+    chipsetTemperature: cpuTemperature.chipset ?? null,
     memory,
     storage,
+    network
   };
 };
 

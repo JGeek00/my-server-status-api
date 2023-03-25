@@ -126,16 +126,7 @@
     "cpuSpeed": ["cores, avg"],
     "cpuTemperature": ["cores", "socket", "chipset", "main"],
     "memory": ["total", "free", "used", "active"],
-    "storage": [
-      "fs",
-      "type",
-      "size",
-      "used",
-      "available",
-      "use",
-      "mount",
-      "rw"
-    ],
+    "storage": ["rx_sec", "wx_sec"],
     "load": [
       "avgLoad",
       "currentLoad",
@@ -143,6 +134,7 @@
       "currentLoadSystem",
       "currentLoadIdle",
       "cpus"
-    ]
+    ],
+    "network": ["rx_sec", "tx_sec"]
   }
 }
