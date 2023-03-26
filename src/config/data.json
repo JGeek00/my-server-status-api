@@ -137,6 +137,6 @@
       "currentLoadIdle",
       "cpus"
     ],
-    "network": ["rx_sec", "tx_sec"]
+    "network": ["iface", "rx_sec", "tx_sec"]
   }
 }

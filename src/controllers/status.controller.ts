@@ -20,7 +20,7 @@ const getStatus = async () => {
     memLayout: Systeminformation.MemLayoutData[];
     fsStats: Systeminformation.FsStatsData;
     currentLoad: Systeminformation.CurrentLoadData;
-    networkStats: Systeminformation.NetworkStatsData;
+    networkStats: Systeminformation.NetworkStatsData[];
     osInfo: Systeminformation.OsData;
   } = await si.get({
     cpu: data.status.cpuInfo.join(","),
@@ -36,10 +36,10 @@ const getStatus = async () => {
 
   const cpuStatus = {
     specs: {
-      "name": `${cpu.manufacturer} ${cpu.brand}`,
-      "minSpeed": cpu.speedMin,
-      "speed": cpu.speed,
-      "maxSpeed": cpu.speedMax
+      name: `${cpu.manufacturer} ${cpu.brand}`,
+      minSpeed: cpu.speedMin,
+      speed: cpu.speed,
+      maxSpeed: cpu.speedMax,
     },
     cores: Array.from({ length: cpuCurrentSpeed.cores.length }, (_, i) => ({
       speed: cpuCurrentSpeed.cores[i] ?? null,
@@ -60,8 +60,8 @@ const getStatus = async () => {
 
   const memory = {
     specs: {
-      "capacity": memLayout.map(m => m.size).reduce((a, b) => a + b),
-      "type": memLayout[0].type
+      capacity: memLayout.map((m) => m.size).reduce((a, b) => a + b),
+      type: memLayout[0].type,
     },
     total: mem.total ?? null,
     used: mem.used ?? null,
@@ -76,12 +76,14 @@ const getStatus = async () => {
       }
     : null;
 
-  const network = osInfo.platform !== "sun"
-    ? {
-        tx: networkStats.tx_sec ?? 0,
-        rx: fsStats.rx_sec ?? 0,
-      }
-    : null;
+  const network =
+    osInfo.platform !== "sun"
+      ? networkStats.map((e) => ({
+          iface: e.iface,
+          tx: e.tx_sec ?? 0,
+          rx: e.rx_sec ?? 0,
+        }))
+      : null;
 
   return {
     cpu: cpuStatus,
@@ -89,7 +91,7 @@ const getStatus = async () => {
     chipsetTemperature: cpuTemperature.chipset ?? null,
     memory,
     storage,
-    network
+    network,
   };
 };
 
