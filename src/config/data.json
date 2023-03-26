@@ -124,7 +124,9 @@
   ],
   "status": {
     "cpuSpeed": ["cores, avg"],
+    "cpuInfo": ["manufacturer", "brand", "speed", "speedMin", "speedMax"],
     "cpuTemperature": ["cores", "socket", "chipset", "main"],
+    "memoryInfo": ["size", "type"],
     "memory": ["total", "free", "used", "active"],
     "storage": ["rx_sec", "wx_sec"],
     "load": [
