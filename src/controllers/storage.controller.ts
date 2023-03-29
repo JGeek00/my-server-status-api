@@ -9,7 +9,7 @@ const getStorageInfo = async () => {
     fsSize,
   }: {
     diskLayout: Systeminformation.DiskLayoutData;
-    blockDevices: Systeminformation.BlockDevicesData;
+    blockDevices: Systeminformation.BlockDevicesData[];
     fsSize: Systeminformation.FsSizeData;
   } = await si.get({
     diskLayout: dataConfig.storage.diskLayout.join(","),
@@ -19,10 +19,10 @@ const getStorageInfo = async () => {
 
   return {
     diskLayout,
-    blockDevices: {
-      ...blockDevices,
-      size: outputNumber(blockDevices.size),
-    },
+    blockDevices: blockDevices.map((b) => ({
+      ...b,
+      size: outputNumber(b.size)
+    })),
     fsSize,
   };
 };
