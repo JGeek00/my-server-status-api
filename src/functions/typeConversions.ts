@@ -1,9 +1,4 @@
-export enum OUTPUT_TYPES { 
-  INT,
-  FLOAT
-} 
-
-export const outputNumber = (input: string | number | null, outputType?: OUTPUT_TYPES) => {
+export const outputNumber = (input: string | number | null) => {
   if (input == null || input == "") {
     return null;
   }
@@ -12,12 +7,7 @@ export const outputNumber = (input: string | number | null, outputType?: OUTPUT_
       return input;
     }
     else {
-      if (outputType && outputType === OUTPUT_TYPES.FLOAT) {
-        return parseFloat(input);
-      }
-      else {
-        return parseInt(input);
-      }
+      return parseInt(input);
     }
   }
 };

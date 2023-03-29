@@ -1,5 +1,5 @@
 import si, { Systeminformation } from "systeminformation";
-import { outputNumber, OUTPUT_TYPES } from "./../functions/typeConversions";
+import { outputNumber } from "./../functions/typeConversions";
 import data from "../config/data.json";
 
 const getNetworkInfo = async () => {
@@ -15,7 +15,7 @@ const getNetworkInfo = async () => {
     networkInterfaces: networkInterfaces.map((i) => ({
       ...i,
       mtu: outputNumber(i.mtu),
-      speed: outputNumber(i.speed, OUTPUT_TYPES.FLOAT)
+      speed: outputNumber(i.speed)
     })),
   };
 };
