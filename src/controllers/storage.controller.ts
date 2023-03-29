@@ -1,5 +1,6 @@
 import si, { Systeminformation } from "systeminformation";
 import dataConfig from "../config/data.json";
+import { outputNumber } from "../functions/typeConversions";
 
 const getStorageInfo = async () => {
   const {
@@ -7,7 +8,7 @@ const getStorageInfo = async () => {
     blockDevices,
     fsSize,
   }: {
-    diskLayout: Systeminformation.DiskLayoutData
+    diskLayout: Systeminformation.DiskLayoutData;
     blockDevices: Systeminformation.BlockDevicesData;
     fsSize: Systeminformation.FsSizeData;
   } = await si.get({
@@ -18,9 +19,12 @@ const getStorageInfo = async () => {
 
   return {
     diskLayout,
-    blockDevices,
-    fsSize
-  }
+    blockDevices: {
+      ...blockDevices,
+      size: outputNumber(blockDevices.size),
+    },
+    fsSize,
+  };
 };
 
 export default getStorageInfo;
