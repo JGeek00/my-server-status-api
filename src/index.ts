@@ -1,5 +1,4 @@
 import { checkRootAccess } from './functions/checkRootAccess';
-import si, { Systeminformation } from "systeminformation";
 import server from "./server";
 
 const startServer = () => {
@@ -12,21 +11,13 @@ const startServer = () => {
 }
 
 const main = async () => {
-  const { osInfo }:{osInfo: Systeminformation.OsData} = await si.get({
-    osInfo: "platform"
-  });
-
-  if (osInfo.platform === "linux") {
-    if (checkRootAccess()) {
-      startServer();
-    }
-    else {
-      console.error("No root permissions detected");
-      process.exit(1);
-    }
+  const root = await checkRootAccess();
+  if (root) {
+    startServer();
   }
   else {
-    startServer();
+    console.error("No root permissions detected");
+    process.exit(1);
   }
 }
 
