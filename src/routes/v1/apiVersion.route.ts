@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
+import { readAppVersion } from "../../utils/readAppVersion";
 
 const ApiVersionRute = async (req: Request, res: Response) => {
-  res.send(process.env.npm_package_version);
+  const appVersion = await readAppVersion();
+  res.send(`v${appVersion}`);
 }
 
 export default ApiVersionRute;

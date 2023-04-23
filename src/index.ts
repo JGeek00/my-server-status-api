@@ -1,12 +1,15 @@
 import { checkRootAccess } from './functions/checkRootAccess';
 import server from "./server";
+import { readAppVersion } from './utils/readAppVersion';
 
 const startServer = () => {
   server
     .listen(server.get("port"))
-    .on("listening", () =>
-      console.log("Server listening on port", server.get("port"))
-    )
+    .on("listening", async () => {
+      const appVersion = await readAppVersion();
+      console.log("Server listening on port", server.get("port"));
+      console.log(`API v${appVersion}`);
+    })
     .on("error", (e) => console.log(e));
 }
 
