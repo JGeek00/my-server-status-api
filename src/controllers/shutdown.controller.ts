@@ -14,9 +14,9 @@ const shutdownMachine = async () => {
       return false;
     }
   }
-  else if (osInfo.platform === "windows") {
+  else if (osInfo.platform === "Windows") {
     try {
-      execSync("shutdown -s -t 5");
+      execSync("shutdown /s");
       return true;
     } catch (error) {
       return false;
