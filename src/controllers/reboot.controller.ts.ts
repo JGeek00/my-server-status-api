@@ -8,7 +8,7 @@ const rebootMachine = async () => {
 
   if (osInfo.platform === "linux") {
     try {
-      execSync("sudo shutdown -r 5");
+      execSync("sudo shutdown -r now");
       return true;
     } catch (error) {
       return false;
