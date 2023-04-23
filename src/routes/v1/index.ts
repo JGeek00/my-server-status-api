@@ -8,10 +8,12 @@ import StatusRoute from './status.route';
 import StorageRoute from './storage.route';
 import SystemRoute from './system.route';
 import OsRoute from './os.route';
+import ApiVersionRute from './apiVersion.route';
 
 const router: Router = Router();
 
 router.get('/check-credentials', CheckCredentialsRoute);
+router.get('/api-version', ApiVersionRute);
 router.get('/general-info', GeneralInfo);
 router.get('/cpu', CpuRoute);
 router.get('/memory', MemoryRoute);
