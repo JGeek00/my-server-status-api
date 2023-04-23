@@ -1,11 +1,12 @@
 {
   "name": "my-server-status",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "REST API to get information about your server",
   "main": "src/index.ts",
   "scripts": {
     "build": "npx tsc",
     "start": "sudo node dist/index.js",
+    "start:noroot": "node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "change-password": "node dist/auth/changePassword.js",
     "set-credentials": "node dist/auth/setCredentials.js"
