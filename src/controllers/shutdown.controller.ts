@@ -8,7 +8,7 @@ const shutdownMachine = async () => {
 
   if (osInfo.platform === "linux") {
     try {
-      execSync("sudo shutdown -P now");
+      execSync("sudo shutdown -h now");
       return true;
     } catch (error) {
       return false;
