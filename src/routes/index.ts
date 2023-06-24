@@ -6,4 +6,8 @@ const router: Router = Router();
 
 router.use('/v1', authMiddleware, RouterV1)
 
+router.get('*', (req, res) => {
+  res.status(404).send("Endpoint not found")
+})
+
 export default router;
