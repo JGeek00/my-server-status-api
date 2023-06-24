@@ -11,7 +11,7 @@ import OsRoute from './os.route';
 import ApiVersionRute from './apiVersion.route';
 import ShutdownRoute from './shutdown.route';
 import RebootRoute from './reboot.route';
-import DockerRoute from './docker.route';
+import DockerRoutes from './docker'
 
 const router: Router = Router();
 
@@ -24,9 +24,10 @@ router.get('/system', SystemRoute);
 router.get('/storage', StorageRoute);
 router.get('/network', NetworkRoute);
 router.get('/status', StatusRoute);
-router.get('/docker', DockerRoute);
 router.get('/os', OsRoute);
 router.get('/shutdown', ShutdownRoute);
 router.get('/reboot', RebootRoute);
+
+router.use('/docker', DockerRoutes);
 
 export default router;
