@@ -138,5 +138,10 @@
       "cpus"
     ],
     "network": ["iface", "rx_sec", "tx_sec"]
+  },
+  "docker": {
+    "info": ["containers", "containersRunning", "containersPaused", "containersStopped", "images", "ncpu", "memTotal"],
+    "images": ["id", "container", "comment", "os", "architecture", "parent", "dockerVersion", "size", "author", "created", "containerConfig", "config", "repoTags"],
+    "containers": ["id", "name", "image", "imageId", "command", "created", "started", "finished", "state", "restartCount", "platform", "ports", "mounts"]
   }
 }

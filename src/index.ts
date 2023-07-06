@@ -14,12 +14,18 @@ const startServer = () => {
 }
 
 const main = async () => {
-  const root = await checkRootAccess();
-  if (root) {
-    startServer();
-  }
+  if (process.platform === "linux" || process.platform === "darwin") {
+    const root = await checkRootAccess();
+    if (root) {
+      startServer();
+    }
+    else {
+      console.error("No root permissions detected");
+      process.exit(1);
+    }
+  } 
   else {
-    console.error("No root permissions detected");
+    console.error("OS not supported");
     process.exit(1);
   }
 }
