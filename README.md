@@ -21,6 +21,14 @@ My Server Status works thanks to <a href="https://systeminformation.io/">Systemi
 
 <br>
 
+<p>
+  <b>⚠️ PROJECT DISCONTINUED ⚠️</b>
+  <br>
+  This project is discontinued and won't receive more updates. If you are looking for a server monitoring API, I recommend you checking out <a href="https://github.com/dani3l0/Status">Status</a>.
+</p>
+
+<br>
+
 ## How to deploy
 [Deployment instructions.](https://github.com/JGeek00/my-server-status-api/wiki/Deployment-instructions)
 ## How to develop
