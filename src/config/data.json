@@ -11,7 +11,8 @@
       "layout": ["size", "type"]
     },
     "storageFs": ["size", "used", "use", "mount"],
-    "network": ["iface", "ip4", "ip6", "mac", "operstate", "type"]
+    "network": ["iface", "ip4", "ip6", "mac", "operstate", "type"],
+    "system": ["uptime"]
   },
   "cpu": {
     "cpu": [

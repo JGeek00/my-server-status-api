@@ -11,6 +11,7 @@ const getGeneralInfo = async () => {
     memLayout,
     fsSize,
     networkInterfaces,
+    time,
   }: {
     cpu: Systeminformation.CpuData;
     cpuCurrentSpeed: Systeminformation.CpuCurrentSpeedData;
@@ -20,6 +21,7 @@ const getGeneralInfo = async () => {
     memLayout: Systeminformation.MemLayoutData;
     fsSize: Systeminformation.FsSizeData;
     networkInterfaces: Systeminformation.NetworkInterfacesData;
+    time: Systeminformation.TimeData;
   } = await si.get({
     cpu: dataConfig.general.cpu.cpu.join(","),
     cpuCurrentSpeed: dataConfig.general.cpu.currentSpeed.join(","),
@@ -29,6 +31,7 @@ const getGeneralInfo = async () => {
     memLayout: dataConfig.general.memory.layout.join(","),
     fsSize: dataConfig.general.storageFs.join(","),
     networkInterfaces: dataConfig.general.network.join(","),
+    time: dataConfig.general.system.join(",")
   });
   
   return {
@@ -44,6 +47,9 @@ const getGeneralInfo = async () => {
     },
     storageFs: fsSize,
     network: networkInterfaces,
+    system: {
+      uptime: time.uptime ?? null
+    }
   };
 };
 
