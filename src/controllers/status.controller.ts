@@ -12,6 +12,7 @@ const getStatus = async () => {
     currentLoad,
     networkStats,
     osInfo,
+    time,
   }: {
     cpu: Systeminformation.CpuData;
     cpuCurrentSpeed: Systeminformation.CpuTemperatureData;
@@ -22,6 +23,7 @@ const getStatus = async () => {
     currentLoad: Systeminformation.CurrentLoadData;
     networkStats: Systeminformation.NetworkStatsData[];
     osInfo: Systeminformation.OsData;
+    time: Systeminformation.TimeData;
   } = await si.get({
     cpu: data.status.cpuInfo.join(","),
     cpuCurrentSpeed: data.status.cpuSpeed.join(","),
@@ -32,6 +34,7 @@ const getStatus = async () => {
     currentLoad: data.status.load.join(","),
     networkStats: data.status.network.join(","),
     osInfo: "platform",
+    time: data.status.system.join(",")
   });
 
   const cpuStatus = {
@@ -85,6 +88,10 @@ const getStatus = async () => {
         }))
       : null;
 
+  const system = {
+    uptime: time.uptime ?? null
+  }
+
   return {
     cpu: cpuStatus,
     socketTemperature: cpuTemperature.socket ?? null,
@@ -92,6 +99,7 @@ const getStatus = async () => {
     memory,
     storage,
     network,
+    system,
   };
 };
 
