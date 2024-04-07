@@ -34,7 +34,7 @@ My Server Status works thanks to <a href="https://systeminformation.io/">Systemi
 ## How to develop
 ⚠️ The API requires root access on Windows and Linux ⚠️
 1. Clone this repository.
-2. The recommended Node.js version is ``v16.19.1``.
+2. The recommended Node.js version is ``v20``.
 3. Run ``npm install``.
 4. The API by default starts on port 3000. If you want to use another port, create a .env file and declare there the ``PORT`` variable with the desired port.
 5. Run ``npm run dev`` to start the API.
