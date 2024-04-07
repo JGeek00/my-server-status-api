@@ -8,6 +8,7 @@ dotenv.config();
 const server = express();
 
 server.set('port', process.env.PORT ?? defaultConfig.port);
+server.set('address', process.env.LISTEN_ADDRESS ?? defaultConfig.listenAddress);
 
 server.use('/', Router)
 

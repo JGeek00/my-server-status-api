@@ -1,4 +1,5 @@
 {
   "port": 3000,
-  "salt": 10
+  "salt": 10,
+  "listenAddress": "0.0.0.0"
 }

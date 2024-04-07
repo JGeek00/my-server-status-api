@@ -4,10 +4,10 @@ import { readAppVersion } from './utils/readAppVersion';
 
 const startServer = () => {
   server
-    .listen(server.get("port"))
+    .listen(server.get("port"), server.get("address"))
     .on("listening", async () => {
       const appVersion = await readAppVersion();
-      console.log("Server listening on port", server.get("port"));
+      console.log("Server listening on:", `${server.get("address")}:${server.get("port")}`);
       console.log(`API v${appVersion}`);
     })
     .on("error", (e) => console.log(e));
