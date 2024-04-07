@@ -137,7 +137,8 @@
       "currentLoadIdle",
       "cpus"
     ],
-    "network": ["iface", "rx_sec", "tx_sec"]
+    "network": ["iface", "rx_sec", "tx_sec"],
+    "system": ["uptime"]
   },
   "docker": {
     "info": ["containers", "containersRunning", "containersPaused", "containersStopped", "images", "ncpu", "memTotal"],
